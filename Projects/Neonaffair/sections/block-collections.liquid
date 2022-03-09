@@ -1,0 +1,78 @@
+<div class="main_Content">
+  <div class="container">
+    <div class="block-list">
+      {% for block in section.blocks %}
+      <div id="block-{{ block.id }}" class="block-list__item">
+        <style>
+          #block-{{ block.id }} .promo-block{
+            background-color: {{block.settings.bgr_color}};
+          }
+          #block-{{ block.id }} .promo-block .promo-block__button{
+            color: {{block.settings.bgr_color}};
+          }
+        </style>
+        <a href="{{ block.settings.button_link }}" class="promo-block">
+          <div class="promo-block__inner">
+          	{% if block.settings.heading %}
+            	<h3>{{ block.settings.heading }}</h3>
+            {% endif %}
+            {% if block.settings.text %}
+            	{{ block.settings.text }}
+            {% endif %}
+            {% if block.settings.button_label %}
+            <span class="promo-block__button">{{ block.settings.button_label }}</span>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Promo Block",
+	"class" : "promo-block-in-collection",
+    "settings": [],
+	"blocks": [
+	  {
+		"type": "quote",
+		"name": "Item",
+		"settings": [ 
+          {
+            "type": "color",
+            "id": "bgr_color",
+            "label": "BGR Color",
+            "default": "transparent"
+          },
+		  {
+			"type": "text",
+			"id": "heading",
+			"label": "Heading"
+		  },
+          {
+			"type": "richtext",
+			"id": "text",
+			"label": "Text"
+		  },
+		  {
+			"type": "text",
+			"id": "button_label",
+			"label": "Button Label"
+		  },
+		  {
+			"type": "url",
+			"id": "button_link",
+			"label": "Button Link"
+		  }
+		]
+	  }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

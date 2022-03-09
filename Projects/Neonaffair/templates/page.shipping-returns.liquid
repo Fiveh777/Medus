@@ -1,0 +1,10 @@
+<section class="section">
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container content page-content-whith">
+    <div class="one-whole column page__header">
+      <h1 class="page__title heading">{{ page.title }}</h1>
+     {% comment %}<div class="feature_divider"></div>{% endcomment %}
+    </div>
+    {% render 'page-multi-column', content: page.content %}
+  </div>
+</section>

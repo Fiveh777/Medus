@@ -1,0 +1,87 @@
+<div class="main_Content">
+  {% if section.settings.heading != blank %}
+  <div class="header_Content">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+  {% endif %}
+  <div id="tabs">
+    <ul>
+      {% assign button_blocks = section.blocks | where: 'type', 'button' %}
+      {% for block in button_blocks %}
+      <li><a href="#tabs-{{ forloop.index }}">{{ block.settings.heading }}</a></li>
+      {% endfor %}
+    </ul>
+    {% assign collection_blocks = section.blocks | where: 'type', 'collection' %}
+    {% for block in collection_blocks %}
+    <div id="tabs-{{ forloop.index }}">
+      {%- assign collection = collections[block.settings.feature_collection] -%}
+      <div class="tabs_Content">
+        <div class="container">
+          <div class="one-whole column">
+            {% render 'product-loop-custom',
+        	products: collection.products,
+            products_per_row: block.settings.products_per
+            %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Tabs Product",
+	"class": "section-tabs-products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "button",
+        "name": "Heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "feature_collection",
+            "label": "Collection"
+          },
+          {
+            "type": "range",
+            "id": "products_per",
+            "label": "Products per row",
+            "min": 2,
+            "max": 7,
+            "step": 1,
+            "default": 3
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Tabs Product",
+      "category": "Collection"
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

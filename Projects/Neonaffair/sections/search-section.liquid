@@ -1,0 +1,85 @@
+{% render 'include-search' %}
+
+{% schema %}
+  {
+    "name": "Search",
+    "class": "shopify-section--search",
+    "settings": [
+      {
+        "type": "text",
+        "id": "search_title",
+        "label": "Heading",
+        "default": "Search our shop"
+      },
+      {
+        "type": "richtext",
+        "id": "search_text",
+        "label": "Subheading"
+      },
+      {
+        "type": "select",
+        "id": "search_section_text_align",
+        "label": "Text alignment",
+        "default": "center",
+        "options": [
+           {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+       ]
+      },
+      {
+        "type": "text",
+        "id": "search_term",
+        "label": "Placeholder text",
+        "default": "Search..."
+      },
+      {
+        "type": "header",
+        "content": "Banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner image",
+        "info": "1600 x 300px recommended"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile banner image",
+        "info": "Display a different image on mobile screens. This only appears when the desktop image is set."
+      },
+      {
+        "type": "header",
+        "content": "Advanced"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
+      },
+      {
+        "type": "text",
+        "id": "css_class",
+        "label": "CSS Class"
+      },
+      {
+        "type": "textarea",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ],
+    "presets": [{
+      "name": "Search",
+      "category": "Content"
+    }]
+  }
+{% endschema %}

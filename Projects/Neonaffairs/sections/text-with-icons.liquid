@@ -1,0 +1,73 @@
+<div class="main_Section">
+  <div class="conatiner">
+    <ul class="text-with-icons">
+      {% assign text-with-icons_blocks = section.blocks | where: 'type', 'text-with-icons' %}
+      {% for blocks in text-with-icons_blocks %}
+      <li class="text-with-icons__item">
+        <div class="text-with-icons__icon-wrapper">
+          {% if blocks.settings.image != blank %}
+          	<img src="{{ blocks.settings.image | img_url: '320x' }}">
+          {% endif %}
+          {% if blocks.settings.icon_SVG != blank %}
+          	{{ blocks.settings.icon_SVG }}
+          {% endif %}
+        </div>
+        <div class="text-with-icons__content-wrapper">
+          <h2>{{ blocks.settings.title-with-text }}</h2>
+          <div class="rte">
+            {{ blocks.settings.rte-text }}
+          </div>
+        </div>
+      </li>
+      <!-- Stuff -->
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Text with Icons",
+	"class": "section-text-with-icons",
+    "settings": [],
+	"blocks": [
+      {
+        "type": "text-with-icons",
+        "name": "Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "html",
+            "id": "icon_SVG",
+            "label": "Icon SVG"
+          },
+		  {
+			"type": "text",
+			"id": "title-with-text",
+			"label": "Heading"
+		  },
+		  {
+			"type": "richtext",
+			"id": "rte-text",
+			"label": "Text"
+		  }
+        ]
+      }
+    ],
+    "presets": [
+    	{
+          "name": "Text with icons",
+          "category": "Text"
+        }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
