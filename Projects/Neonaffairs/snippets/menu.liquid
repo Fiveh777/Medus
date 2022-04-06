@@ -1,7 +1,0 @@
-{% for link in linklists[linklist].links %}
-  <li>
-    <a href="{{ link.url }}" class="{% if link.active %}active{% endif %} {% if link.url == '#' %}url-deadlink{% endif %} {% if linklists[link.handle] != empty %}dropdown_link{% else %} top_link {% endif %}" data-dropdown-rel="{{ link.handle }}">
-      {{ link.title }} {% if linklists[link.handle] != empty %}{% endif %}
-    </a>
-</li>
-{% endfor %}
